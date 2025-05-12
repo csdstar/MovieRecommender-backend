@@ -6,3 +6,6 @@ spring:
     url: jdbc:mysql://127.0.0.1:3306/movie
     username: root
     password: movie123456
+
+server:
+  port: 8080   # 修改当前后端程序运行在的端口号
