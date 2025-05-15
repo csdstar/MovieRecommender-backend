@@ -9,5 +9,5 @@ public interface ITestService extends IService<TestEntity> {
      * 这个接口继承自IService，提供了CRUD等基本操作的默认实现。
      * @return List of TestEntity
      */
-    public List<String> getTestEntityList();
+    List<String> getTestEntityList();
 }
