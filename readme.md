@@ -57,3 +57,6 @@ http://localhost:8080/test/id_name?id=1&name=%E4%BA%8C%E5%B8%85%E5%93%A5
 数据库为空时抛出错误，controller检测到异常输出如下：
 
 ![image-20250515174048735](assets/image-20250515174048735.png)
+
+### 2025.5.17
+​		设置了github action进行自动同步，每隔2h将gitee仓库同步到github
