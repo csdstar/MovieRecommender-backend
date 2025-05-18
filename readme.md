@@ -60,3 +60,6 @@ http://localhost:8080/test/id_name?id=1&name=%E4%BA%8C%E5%B8%85%E5%93%A5
 
 ### 2025.5.17
 ​		设置了github action进行自动同步，每隔2h将gitee仓库同步到github
+
+### 2025.5.18
+​		将数据库部署到服务器，已实现远程通信和修改
