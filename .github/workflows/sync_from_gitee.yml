@@ -15,5 +15,5 @@ jobs:
       - name: Push to GitHub (mirror)
         run: |
           cd repo.git
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
           git push --mirror
