@@ -1,0 +1,19 @@
+name: Sync from Gitee
+
+on:
+  schedule:
+    - cron: '0 */1 * * *'    # 每 1 小时（UTC）执行一次
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clone from Gitee (mirror)
+        run: |
+          git clone --mirror https://${{ secrets.SOURCE_REPO_USERNAME }}:${{ secrets.SOURCE_REPO_PASSWORD }}@${{ secrets.SOURCE_REPO_URL }} repo.git
+      - name: Push to GitHub (mirror)
+        run: |
+          cd repo.git
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git push --mirror
