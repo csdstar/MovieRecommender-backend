@@ -17,3 +17,4 @@ jobs:
           cd repo.git
           git remote set-url origin https://x-access-token:${{ secrets.PERSONAL_ACCESS_TOKEN }}@github.com/${{ github.repository }}.git
           git push --mirror
+          # This is a dummy comment to trigger GitHub workflow schedule activation
