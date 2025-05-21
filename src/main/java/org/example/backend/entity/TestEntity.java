@@ -1,5 +1,6 @@
 package org.example.backend.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
@@ -23,8 +24,11 @@ import lombok.experimental.Accessors;
 // using= ToStringSerializer.class 表示使用 ToStringSerializer 来序列化当前类的实例。
 // ToStringSerializer 会调用对象的 toString() 方法来获取序列化的字符串。
 // 这通常用于确保对象在转换为 JSON 时，以特定的字符串形式表示，例如使用对象的 ID 而不是整个对象结构。
-
 public class TestEntity {
+    @TableField("id")
+    // @TableField 是 MyBatis-Plus 框架的一个注解，用于指定当前字段对应的数据库字段
     private Integer id;
+
+    @TableField("name")
     private String name;
 }
