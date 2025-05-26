@@ -1,0 +1,15 @@
+@startuml
+' 设置皮肤参数
+skinparam monochrome true
+skinparam class {
+    BackgroundColor #EEEEFF
+    BorderColor #6666AA
+    ArrowColor #6666AA
+}
+
+class BrowseRecord {
+    -user_id: int (PK)
+    -movie_id: int (PK)
+    -time: timestamp (PK)
+}
+@enduml
