@@ -1,3 +1,4 @@
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/csdstar/MovieRecommender-backend)
 # 软件工程基础课程
 ## 电影推荐项目
 ### init
