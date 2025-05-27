@@ -26,73 +26,94 @@ import lombok.experimental.Accessors;
 // 这通常用于确保对象在转换为 JSON 时，以特定的字符串形式表示，例如使用对象的 ID 而不是整个对象结构。
 
 public class MovieEntity {
+    // id
     @TableField("id")
-    // @TableField 是 MyBatis-Plus 框架的一个注解，用于指定当前字段对应的数据库字段
     private Integer id;
 
+    // 电影名
     @TableField("name")
     private String name;
 
+    // 电影封面链接
     @TableField("picture_link")
     private String pictureLink;
 
+    // 电影评分
     @TableField("score")
     private Float score;
 
     @TableField("evaluators")
     private Integer evaluators;
 
+    // 电影标签
     @TableField("tag")
     private String tag;
 
+    // 电影排名
     @TableField("ranking")
     private Integer ranking;
 
+    // 上映年份
     @TableField("year")
     private Integer year;
 
+    // 导演
     @TableField("director")
     private String director;
 
+    // 编剧
     @TableField("scriptwriter")
     private String scriptwriter;
 
+    // 主演
     @TableField("actor")
     private String actor;
 
+    // 电影类型
     @TableField("type")
     private String type;
 
+    // 电影地区
     @TableField("area")
     private String area;
 
+    // 语种/语言
     @TableField("language")
     private String language;
 
+    // 上映日期
     @TableField("date")
     private String date;
 
+    // 片长
     @TableField("length")
     private String length;
 
+    // 电影在IMDb的编号
     @TableField("IMDb")
     private String imdb;
 
+    // 标签1
     @TableField("tag1")
     private String tag1;
 
+    // 剧情简介
     @TableField("synopsis")
     private String synopsis;
 
+    // 看过的人数/播放量?
     @TableField("viewed")
     private Integer viewed;
 
+    // 想看人数
     @TableField("wanted")
     private Integer wanted;
 
+    // 去哪看/播放源
     @TableField("WhereToSee")
     private String whereToSee;
 
+    // 豆瓣页面地址
     @TableField("URL")
     private String url;
 }
