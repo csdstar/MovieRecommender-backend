@@ -11,7 +11,7 @@ import java.util.List;
 public interface CommentMapper extends BaseMapper<CommentEntity> {
 
     //查询用户对电影的评论
-    @Select("SELECT comment FROM comment WHERE user_id = #{userId} AND movie_id = #{movieId}")
+    @Select("SELECT comment FROM comment_table WHERE user_id = #{userId} AND movie_id = #{movieId}")
     List<String> CommentsByUserIdAndMovieId(Integer userId, Integer movieId);
 
 }

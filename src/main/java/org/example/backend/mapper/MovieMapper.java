@@ -6,5 +6,4 @@ import org.example.backend.entity.MovieEntity;
 
 @Mapper
 public interface MovieMapper extends BaseMapper<MovieEntity> {
-
 }

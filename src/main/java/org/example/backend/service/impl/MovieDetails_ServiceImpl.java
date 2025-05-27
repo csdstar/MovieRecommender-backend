@@ -121,7 +121,7 @@ public class MovieDetails_ServiceImpl extends ServiceImpl<MovieMapper, MovieEnti
                 //是否收藏
             userStatusDTO.setWishlisted(favoriteMapper.existsByUserIdAndMovieId(userId,movieEntity.getId()));
                 //用户评分
-            float rating = (float) (9 + new Random().nextInt(20) / 10.0);
+            float rating = (float) (9 + new Random().nextInt(10) / 10.0);
             userStatusDTO.setRating(rating);
                 //用户评论
             userStatusDTO.setComment(commentMapper.CommentsByUserIdAndMovieId(userId,movieEntity.getId()));
