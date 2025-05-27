@@ -124,6 +124,18 @@ public class MovieDetails_ServiceImpl extends ServiceImpl<MovieMapper, MovieEnti
             float rating = (float) (9 + new Random().nextInt(10) / 10.0);
             userStatusDTO.setRating(rating);
             //用户评论
+
+
+
+
+
+fbafbaogfboajgaogjbjgobaogaobgagbgajgbagjgaag
+
+
+
+
+
+
             userStatusDTO.setComment(commentMapper.CommentsByUserIdAndMovieId(userId,movieEntity.getId()));
             movieDTO.setUserStatus(userStatusDTO);
 
