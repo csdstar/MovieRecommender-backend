@@ -116,16 +116,18 @@ public class MovieDetails_ServiceImpl extends ServiceImpl<MovieMapper, MovieEnti
 
             //用户相关
             UserStatusDTO userStatusDTO = new UserStatusDTO();
-                //是否看过
+            //是否看过
             userStatusDTO.setWatched(browseMapper.existByUserIdAndMovieId(userId, movieEntity.getId()));
-                //是否收藏
+            //是否收藏
             userStatusDTO.setWishlisted(favoriteMapper.existsByUserIdAndMovieId(userId,movieEntity.getId()));
-                //用户评分
+            //用户评分
             float rating = (float) (9 + new Random().nextInt(10) / 10.0);
             userStatusDTO.setRating(rating);
-                //用户评论
+            //用户评论
             userStatusDTO.setComment(commentMapper.CommentsByUserIdAndMovieId(userId,movieEntity.getId()));
             movieDTO.setUserStatus(userStatusDTO);
+
+            // 谢润圻写的BUG
 
 
             movieDTOs.add(movieDTO);
