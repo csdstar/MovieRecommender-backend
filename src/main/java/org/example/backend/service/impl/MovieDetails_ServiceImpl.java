@@ -127,7 +127,7 @@ public class MovieDetails_ServiceImpl extends ServiceImpl<MovieMapper, MovieEnti
             userStatusDTO.setComment(commentMapper.CommentsByUserIdAndMovieId(userId,movieEntity.getId()));
             movieDTO.setUserStatus(userStatusDTO);
 
-            // 谢润圻写的BUG
+            // 谢润圻是傻蛋
 
 
             movieDTOs.add(movieDTO);
