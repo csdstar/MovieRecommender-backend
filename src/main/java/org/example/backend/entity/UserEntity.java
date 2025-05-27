@@ -25,12 +25,15 @@ import lombok.experimental.Accessors;
 // ToStringSerializer 会调用对象的 toString() 方法来获取序列化的字符串。
 // 这通常用于确保对象在转换为 JSON 时，以特定的字符串形式表示，例如使用对象的 ID 而不是整个对象结构。
 public class UserEntity {
+    // 用户id
     @TableField("id")
     private Integer id;
 
+    // 用户名
     @TableField("name")
     private String name;
 
+    // 密码
     @TableField("password")
     private String password;
 

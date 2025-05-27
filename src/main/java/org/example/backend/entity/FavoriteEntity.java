@@ -29,12 +29,15 @@ import java.time.LocalDateTime;
 
 public class FavoriteEntity {
 
+    // 用户id
     @TableField("user_id")
     private Integer userId;
 
+    // 收藏的电影id
     @TableField("movie_id")
     private Integer movieId;
 
+    // 时间
     @TableField("time")
     private LocalDateTime time;
 }
