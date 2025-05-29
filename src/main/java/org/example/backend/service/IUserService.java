@@ -5,6 +5,6 @@ import org.example.backend.dto.RegisterReq;
 import org.example.backend.exception.ServiceException;
 
 public interface IUserService {
-    Long register(RegisterReq req) throws ServiceException;
+    Integer register(RegisterReq req) throws ServiceException;
     String login(LoginReq req) throws ServiceException;
 }

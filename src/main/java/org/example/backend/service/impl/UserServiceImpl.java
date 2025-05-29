@@ -7,7 +7,6 @@ import org.example.backend.dto.RegisterReq;
 import org.example.backend.exception.ServiceException;
 import org.example.backend.mapper.UserMapper;
 import org.example.backend.service.IUserService;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -16,7 +15,7 @@ public class UserServiceImpl implements IUserService {
     private final UserMapper userMapper;
 
     @Override
-    public Long register(RegisterReq req) {
+    public Integer register(RegisterReq req) {
         // 检查用户名是否存在
         if (userMapper.existsByUsername(req.getUsername())) {
             throw new ServiceException("用户名已存在");

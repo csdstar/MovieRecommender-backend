@@ -18,7 +18,7 @@ public class AuthController {
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody @Valid RegisterReq req) {
-        Long userId = userService.register(req);
+        Integer userId = userService.register(req);
         return ResponseEntity.ok(Map.of("userId", userId));
     }
 
