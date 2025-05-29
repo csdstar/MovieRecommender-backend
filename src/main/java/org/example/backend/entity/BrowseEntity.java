@@ -29,12 +29,15 @@ import java.time.LocalDateTime;
 
 public class BrowseEntity {
 
+    //  用户id
     @TableField("user_id")
     private Integer userId;
 
+    // 浏览的电影id
     @TableField("movie_id")
     private Integer movieId;
 
+    // 浏览时间
     @TableField("time")
     private LocalDateTime time;
 }

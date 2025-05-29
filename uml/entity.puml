@@ -1,0 +1,79 @@
+@startuml
+' 设置皮肤参数
+skinparam monochrome true
+skinparam class {
+    BackgroundColor #EEEEFF
+    BorderColor #6666AA
+    ArrowColor #6666AA
+}
+
+' 定义实体类
+class User {
+    -id: int (PK)
+    -name: varchar(255)
+    -password: varchar(255)
+}
+
+class Movie {
+    -id: int (PK)
+    -name: varchar(255)
+    -picture_link: varchar(255)
+    -score: float
+    -evaluators: int
+    -tag: varchar(255)
+    -ranking: int
+    -year: int
+    -director: varchar(255)
+    -scriptwriter: varchar(255)
+    -actor: text
+    -type: varchar(255)
+    -area: varchar(255)
+    -language: varchar(255)
+    -date: varchar(255)
+    -length: varchar(255)
+    -IMDb: varchar(255)
+    -tag1: varchar(255)
+    -synopsis: text
+    -viewed: int
+    -wanted: int
+    -WhereToSee: varchar(255)
+    -URL: varchar(255)
+}
+
+class BrowseRecord {
+    -user_id: int (PK)
+    -movie_id: int (PK)
+    -time: timestamp (PK)
+}
+
+class Comment {
+    -user_id: int (PK)
+    -movie_id: int (PK)
+    -comment: text
+    -time: timestamp
+}
+
+class Favorite {
+    -user_id: int (PK)
+    -movie_id: int (PK)
+    -time: timestamp
+}
+
+
+' 定义关系（通过关联类实现）
+User "1" -- "*" BrowseRecord : 浏览记录
+Movie "1" -- "*" BrowseRecord : 被浏览
+
+Comment "*" -- "1" User : 发表评论
+Comment "*" -- "1" Movie : 被评论
+
+User "1" -- "*" Favorite : 收藏
+Movie "1" -- "*" Favorite : 被收藏
+
+
+' 添加详细注释
+BrowseRecord : 记录用户浏览电影的历史\n复合主键: (user_id, movie_id)
+Comment : 记录用户对电影的评论\n复合主键: (user_id, movie_id)
+Favorite : 记录用户收藏电影的信息\n复合主键: (user_id, movie_id)
+
+@enduml

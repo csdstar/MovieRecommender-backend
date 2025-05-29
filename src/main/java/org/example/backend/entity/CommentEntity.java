@@ -28,16 +28,19 @@ import java.time.LocalDateTime;
 // 这通常用于确保对象在转换为 JSON 时，以特定的字符串形式表示，例如使用对象的 ID 而不是整个对象结构。
 
 public class CommentEntity {
-
+    // 用户id
     @TableField("user_id")
     private Integer userId;
 
+    // 被评论的电影id
     @TableField("movie_id")
     private Integer movieId;
 
+    // 评论
     @TableField("comment")
     private String comment;
 
+    // 评论时间
     @TableField("time")
     private LocalDateTime time;
 }

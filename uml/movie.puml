@@ -1,0 +1,35 @@
+@startuml
+' 设置皮肤参数
+skinparam monochrome true
+skinparam class {
+    BackgroundColor #EEEEFF
+    BorderColor #6666AA
+    ArrowColor #6666AA
+}
+
+class Movie {
+    -id: int (PK)
+    -name: varchar(255)
+    -picture_link: varchar(255)
+    -score: float
+    -evaluators: int
+    -tag: varchar(255)
+    -ranking: int
+    -year: int
+    -director: varchar(255)
+    -scriptwriter: varchar(255)
+    -actor: text
+    -type: varchar(255)
+    -area: varchar(255)
+    -language: varchar(255)
+    -date: varchar(255)
+    -length: varchar(255)
+    -IMDb: varchar(255)
+    -tag1: varchar(255)
+    -synopsis: text
+    -viewed: int
+    -wanted: int
+    -WhereToSee: varchar(255)
+    -URL: varchar(255)
+}
+@enduml
