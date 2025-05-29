@@ -1,6 +1,7 @@
 package org.example.backend.entity;
 
 import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.databind.ser.std.ToStringSerializer;
@@ -25,11 +26,11 @@ import lombok.experimental.Accessors;
 // ToStringSerializer 会调用对象的 toString() 方法来获取序列化的字符串。
 // 这通常用于确保对象在转换为 JSON 时，以特定的字符串形式表示，例如使用对象的 ID 而不是整个对象结构。
 public class UserEntity {
-    @TableField("id")
-    private Integer id;
+    @TableId("id")
+    private Long id;
 
-    @TableField("name")
-    private String name;
+    @TableField("username")
+    private String username;
 
     @TableField("password")
     private String password;

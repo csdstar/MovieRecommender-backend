@@ -35,6 +35,7 @@ public class Result<T> {
     /**
      * 权限不足
      */
+
     public static final int NO_AUTH_CODE = 700;
 
     /**
