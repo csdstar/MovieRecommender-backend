@@ -1,6 +1,7 @@
 package org.example.backend.utils;
 
 import org.example.backend.exception.ServiceException;
+import org.example.backend.utils.jwt.JwtUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.MethodParameter;
 import org.springframework.lang.NonNull;
@@ -22,14 +23,15 @@ public class CurrentUserIdResolver implements HandlerMethodArgumentResolver {
         this.jwtUtils = jwtUtils;
     }
 
-    /** 对于处理对象进行筛选，只处理标了 @CurrentUserId 注解，且类型是 Integer 的参数
+    /** 判断是否支持该参数注入
+     * 仅当参数上标注了 @CurrentUserId 注解，且参数类型为 Integer 时才注入。
      * @param parameter 待处理的函数参数对象
      * @return 返回true的函数参数对象就是我们要处理的对象
      */
     @Override
     public boolean supportsParameter(MethodParameter parameter) {
-        parameter.getParameterAnnotation(CurrentUserId.class);
-        return parameter.getParameterType().equals(Integer.class);
+        return parameter.hasParameterAnnotation(CurrentUserId.class)
+                && parameter.getParameterType().equals(Integer.class);
     }
 
     /** 已经过了筛选，现在从token中解析出对应的userId并注入函数参数

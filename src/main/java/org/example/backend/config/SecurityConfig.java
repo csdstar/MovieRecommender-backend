@@ -10,7 +10,6 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
-
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -21,7 +20,7 @@ public class SecurityConfig {
                 // 配置接口权限
                 .authorizeHttpRequests(auth -> auth
                         // 允许注册和登录接口无需认证
-                        .requestMatchers("/api/auth/register", "/api/auth/login").permitAll()
+                        .requestMatchers("/api/auth/register", "/api/auth/login", "/movies/details").permitAll()
                         // 其他所有接口需认证
                         .anyRequest().authenticated()
                 );

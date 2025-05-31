@@ -7,12 +7,14 @@ import org.example.backend.dto.RegisterReq;
 import org.example.backend.exception.ServiceException;
 import org.example.backend.mapper.UserMapper;
 import org.example.backend.service.IUserService;
+import org.example.backend.utils.jwt.JwtUtils;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class UserServiceImpl implements IUserService {
     private final UserMapper userMapper;
+    private final JwtUtils jwtUtils;
 
     @Override
     public Integer register(RegisterReq req) {
@@ -34,13 +36,16 @@ public class UserServiceImpl implements IUserService {
 
     @Override
     public String login(LoginReq req) {
+        // 根据用户名查找用户
         UserEntity user = userMapper.findByUsername(req.getUsername())
                 .orElseThrow(() -> new ServiceException("用户不存在"));
 
+        // 再验证用户密码
         if (!user.getPassword().equals(req.getPassword())) {
             throw new ServiceException("密码错误");
         }
 
-        return "登录成功";
+        //用该用户id新建token并返回
+        return jwtUtils.generateToken(user.getId());
     }
 }

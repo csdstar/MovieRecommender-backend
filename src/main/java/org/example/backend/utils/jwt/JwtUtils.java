@@ -1,4 +1,4 @@
-package org.example.backend.utils;
+package org.example.backend.utils.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.SignatureAlgorithm;
