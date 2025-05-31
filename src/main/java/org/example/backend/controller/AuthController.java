@@ -4,7 +4,9 @@ import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.example.backend.dto.LoginReq;
 import org.example.backend.dto.RegisterReq;
+import org.example.backend.result.Result;
 import org.example.backend.service.IUserService;
+import org.example.backend.utils.JwtUtils;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,11 +17,13 @@ import java.util.Map;
 @RequiredArgsConstructor
 public class AuthController {
     private final IUserService userService;
+    private final JwtUtils jwtUtils;
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody @Valid RegisterReq req) {
+    public Result<Map<String, String>> register(@RequestBody @Valid RegisterReq req) {
         Integer userId = userService.register(req);
-        return ResponseEntity.ok(Map.of("userId", userId));
+        String token = jwtUtils.generateToken(userId);
+        return Result.success(Map.of("token", token));
     }
 
     @PostMapping("/login")

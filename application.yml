@@ -1,3 +1,0 @@
-jwt:
-  secret: your-256-bit-secret-key-here  # 通过 openssl rand -hex 32 生成
-  expiration: 86400000  # Token有效期24小时
