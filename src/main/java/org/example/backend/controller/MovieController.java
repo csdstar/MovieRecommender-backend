@@ -7,6 +7,7 @@ import org.example.backend.utils.CurrentUserId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -21,6 +22,11 @@ public class MovieController {
     @Autowired
     public MovieController(MovieDetails_Service movieDetails_Service) {
         this.movieDetails_Service = movieDetails_Service;
+    }
+    @GetMapping("/search")
+    public List<MovieDTO> searchMovies(@RequestParam("search") String keyword) {
+        log.info("searchMovies, keyword = {}", keyword);
+        return movieDetails_Service.searchMovies(keyword);
     }
 
     @GetMapping("/details")

@@ -1,5 +1,5 @@
 package org.example.backend.service.impl;
-
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.example.backend.dto.movie_details.CastDTO;
@@ -44,7 +44,6 @@ public class MovieDetails_ServiceImpl extends ServiceImpl<MovieMapper, MovieEnti
         List<MovieEntity> movieEntities = movieMapper.selectList(null);
         //创建一个新的MovieDTO列表
         List<MovieDTO> movieDTOs = new ArrayList<>();
-
         //遍历电影实体列表，将每个实体转换为DTO
         for(MovieEntity movieEntity : movieEntities) {
             MovieDTO movieDTO = new MovieDTO();
@@ -133,5 +132,49 @@ public class MovieDetails_ServiceImpl extends ServiceImpl<MovieMapper, MovieEnti
 
         return movieDTOs;
     }
+    @Override
+    public List<MovieDTO> searchMovies(String keyword) {
+        String kw = "%" + keyword.trim() + "%";
+        // 构造多列 OR 的模糊查询
+        QueryWrapper<MovieEntity> qw = new QueryWrapper<>();
+        qw.like("name", kw)
+                .or().like("director", kw)
+                .or().like("scriptwriter", kw)
+                .or().like("actor", kw)
+                .or().like("type", kw)
+                .or().like("area", kw);
 
+        // 拿到实体
+        List<MovieEntity> es = movieMapper.selectList(qw);
+
+        // 复用你 getMovieDetails 里的那套手工 DTO 映射（省略 UserStatus 部分）
+        List<MovieDTO> dtos = new ArrayList<>();
+        for (MovieEntity e : es) {
+            MovieDTO dto = new MovieDTO();
+            dto.setId(e.getId());
+            dto.setTitle(e.getName());
+            dto.setMovie(e.getUrl());
+            dto.setYear(e.getYear());
+            dto.setRuntime(e.getViewed());
+            RatingDTO rt = new RatingDTO();
+            rt.setScore(e.getScore());
+            rt.setVotes(favoriteMapper.CountNumByMovieId(e.getId()));
+            dto.setRating(rt);
+            dto.setPoster(e.getPictureLink());
+            dto.setGenres(e.getType() == null ? List.of() : List.of(e.getType().split("/")));
+            dto.setDirectors(e.getDirector() == null ? List.of() : List.of(e.getDirector().split("/")));
+            dto.setWriters(e.getScriptwriter() == null ? List.of() : List.of(e.getScriptwriter().split("/")));
+            List<CastDTO> casts = new ArrayList<>();
+            if (e.getActor() != null) for (String a : e.getActor().split("/")) {
+                CastDTO c = new CastDTO(); c.setName(a); casts.add(c);
+            }
+            dto.setCasts(casts);
+            dto.setCountries(e.getArea() == null ? List.of() : List.of(e.getArea().split("/")));
+            dto.setLanguages(e.getLanguage() == null ? List.of() : List.of(e.getLanguage().split("/")));
+            dto.setReleaseDate(e.getDate());
+            dto.setSummary(e.getSynopsis());
+            dtos.add(dto);
+        }
+        return dtos;
+    }
 }

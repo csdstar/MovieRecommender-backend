@@ -10,4 +10,5 @@ public interface MovieDetails_Service extends IService<MovieEntity> {
     // 获取电影详情
     List<MovieDTO> getMovieDetails(Integer userId);
 
+    List<MovieDTO> searchMovies(String keyword);
 }
